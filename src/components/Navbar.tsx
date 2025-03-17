@@ -26,9 +26,6 @@ const Navbar = () => {
           <a href="#pricing" className="text-gray-600 hover:text-estate-600 font-medium transition-colors">
             Pricing
           </a>
-          <Button variant="outline" className="border-estate-500 text-estate-500 hover:bg-estate-500 hover:text-white">
-            Log in
-          </Button>
           <Button className="bg-estate-500 hover:bg-estate-600 text-white">
             Get Started
           </Button>
@@ -71,9 +68,6 @@ const Navbar = () => {
               Pricing
             </a>
             <div className="flex flex-col space-y-2 pt-2">
-              <Button variant="outline" className="w-full border-estate-500 text-estate-500 hover:bg-estate-500 hover:text-white">
-                Log in
-              </Button>
               <Button className="w-full bg-estate-500 hover:bg-estate-600 text-white">
                 Get Started
               </Button>
