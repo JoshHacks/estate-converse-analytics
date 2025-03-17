@@ -26,6 +26,9 @@ const Navbar = () => {
           <a href="#pricing" className="text-gray-600 hover:text-estate-600 font-medium transition-colors">
             Pricing
           </a>
+          <a href="#contact" className="text-gray-600 hover:text-estate-600 font-medium transition-colors">
+            Contact
+          </a>
           <Button className="bg-estate-500 hover:bg-estate-600 text-white">
             Get Started
           </Button>
@@ -66,6 +69,13 @@ const Navbar = () => {
               className="block text-gray-600 hover:text-estate-600 font-medium transition-colors"
             >
               Pricing
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="block text-gray-600 hover:text-estate-600 font-medium transition-colors"
+            >
+              Contact
             </a>
             <div className="flex flex-col space-y-2 pt-2">
               <Button className="w-full bg-estate-500 hover:bg-estate-600 text-white">

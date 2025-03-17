@@ -15,9 +15,11 @@ const CTASection = () => {
           <Button className="bg-white text-estate-800 hover:bg-gray-100 px-8 py-6 text-lg">
             Start Free Trial
           </Button>
-          <Button variant="outline" className="border-white text-white hover:bg-estate-700 px-8 py-6 text-lg">
-            Book a Demo
-          </Button>
+          <a href="#contact">
+            <Button variant="outline" className="border-white text-white hover:bg-estate-700 px-8 py-6 text-lg">
+              Book a Demo
+            </Button>
+          </a>
         </div>
         <p className="mt-6 text-sm opacity-80">
           No credit card required • 14-day free trial • Cancel anytime
