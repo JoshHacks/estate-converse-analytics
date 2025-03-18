@@ -1,11 +1,9 @@
 
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Legend, Line, LineChart } from "recharts";
-import { PhoneCall, ChartBar, ChartLine, PoundSterling, TrendingUp, MessageSquare, Tag, Clock, FileText } from "lucide-react";
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import { PhoneCall, PoundSterling, TrendingUp, MessageSquare, Tag, Clock, FileText } from "lucide-react";
 
 // Example weekly call data
 const weeklyCallData = [
@@ -51,21 +49,6 @@ const callHistoryData = [
     cost: "£0.25",
   },
 ];
-
-const chartConfig = {
-  calls: {
-    label: "Total Calls",
-    color: "#6366f1",
-  },
-  cost: {
-    label: "Cost (£)",
-    color: "#ec4899",
-  },
-  leadsGenerated: {
-    label: "Leads Generated",
-    color: "#10b981",
-  },
-};
 
 const AnalyticsDashboard = () => {
   return (
@@ -117,83 +100,43 @@ const AnalyticsDashboard = () => {
             </Card>
           </div>
 
-          {/* Charts */}
-          <Tabs defaultValue="bar" className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-              <TabsTrigger value="bar" className="flex items-center gap-2">
-                <ChartBar className="h-4 w-4" />
-                <span>Bar Chart</span>
-              </TabsTrigger>
-              <TabsTrigger value="line" className="flex items-center gap-2">
-                <ChartLine className="h-4 w-4" />
-                <span>Line Chart</span>
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="bar" className="pt-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Weekly Call Statistics</CardTitle>
-                  <CardDescription>
-                    Overview of calls, costs, and leads for the past week
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-2 sm:p-4">
-                  <div className="w-full h-[200px]">
-                    <ChartContainer config={chartConfig}>
-                      <ResponsiveContainer width="99%" height="99%">
-                        <BarChart 
-                          data={weeklyCallData} 
-                          margin={{ top: 5, right: 15, left: 0, bottom: 15 }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="name" />
-                          <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
-                          <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
-                          <ChartTooltip content={<ChartTooltipContent />} />
-                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '2px', fontSize: '11px' }} />
-                          <Bar yAxisId="left" dataKey="calls" name="Calls" fill="#6366f1" radius={[3, 3, 0, 0]} />
-                          <Bar yAxisId="right" dataKey="cost" name="Cost (£)" fill="#ec4899" radius={[3, 3, 0, 0]} />
-                          <Bar yAxisId="left" dataKey="leadsGenerated" name="Leads" fill="#10b981" radius={[3, 3, 0, 0]} />
-                        </BarChart>
-                      </ResponsiveContainer>
-                    </ChartContainer>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-            <TabsContent value="line" className="pt-4">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Weekly Call Trends</CardTitle>
-                  <CardDescription>
-                    Trends of calls, costs, and leads for the past week
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-2 sm:p-4">
-                  <div className="w-full h-[200px]">
-                    <ChartContainer config={chartConfig}>
-                      <ResponsiveContainer width="99%" height="99%">
-                        <LineChart 
-                          data={weeklyCallData} 
-                          margin={{ top: 5, right: 15, left: 0, bottom: 15 }}
-                        >
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <XAxis dataKey="name" />
-                          <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
-                          <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
-                          <ChartTooltip content={<ChartTooltipContent />} />
-                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '2px', fontSize: '11px' }} />
-                          <Line yAxisId="left" type="monotone" dataKey="calls" name="Calls" stroke="#6366f1" activeDot={{ r: 4 }} strokeWidth={1.5} />
-                          <Line yAxisId="right" type="monotone" dataKey="cost" name="Cost (£)" stroke="#ec4899" activeDot={{ r: 4 }} strokeWidth={1.5} />
-                          <Line yAxisId="left" type="monotone" dataKey="leadsGenerated" name="Leads" stroke="#10b981" activeDot={{ r: 4 }} strokeWidth={1.5} />
-                        </LineChart>
-                      </ResponsiveContainer>
-                    </ChartContainer>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
+          {/* Simple Line Chart */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Weekly Call Trends</CardTitle>
+              <CardDescription>
+                Overview of calls for the past week
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[140px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={weeklyCallData}
+                    margin={{ top: 5, right: 10, left: 0, bottom: 5 }}
+                  >
+                    <XAxis 
+                      dataKey="name" 
+                      tick={{ fontSize: 10 }}
+                      tickLine={false}
+                      axisLine={{ stroke: '#e5e7eb' }}
+                    />
+                    <YAxis 
+                      hide={true}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="calls"
+                      stroke="#6366f1"
+                      strokeWidth={2}
+                      dot={{ r: 2 }}
+                      activeDot={{ r: 3 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Call History Table */}
           <Card>
