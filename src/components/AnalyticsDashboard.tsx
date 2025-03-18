@@ -117,7 +117,7 @@ const AnalyticsDashboard = () => {
             </Card>
           </div>
 
-          {/* Charts */}
+          {/* Charts - Fixed layout issues */}
           <Tabs defaultValue="bar" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
               <TabsTrigger value="bar" className="flex items-center gap-2">
@@ -137,24 +137,24 @@ const AnalyticsDashboard = () => {
                     Overview of calls, costs, and leads for the past week
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="h-[400px] w-full">
-                  <ChartContainer config={chartConfig}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={weeklyCallData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
-                        <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
-                        <ChartTooltip 
-                          content={<ChartTooltipContent />}
-                        />
-                        <Legend />
-                        <Bar yAxisId="left" dataKey="calls" name="Calls" fill="#6366f1" radius={[4, 4, 0, 0]} />
-                        <Bar yAxisId="right" dataKey="cost" name="Cost (£)" fill="#ec4899" radius={[4, 4, 0, 0]} />
-                        <Bar yAxisId="left" dataKey="leadsGenerated" name="Leads" fill="#10b981" radius={[4, 4, 0, 0]} />
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </ChartContainer>
+                <CardContent className="pt-0">
+                  <div className="h-[400px] w-full">
+                    <ChartContainer config={chartConfig}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={weeklyCallData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="name" />
+                          <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
+                          <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Bar yAxisId="left" dataKey="calls" name="Calls" fill="#6366f1" radius={[4, 4, 0, 0]} />
+                          <Bar yAxisId="right" dataKey="cost" name="Cost (£)" fill="#ec4899" radius={[4, 4, 0, 0]} />
+                          <Bar yAxisId="left" dataKey="leadsGenerated" name="Leads" fill="#10b981" radius={[4, 4, 0, 0]} />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
                 </CardContent>
               </Card>
             </TabsContent>
@@ -166,30 +166,30 @@ const AnalyticsDashboard = () => {
                     Trends of calls, costs, and leads for the past week
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="h-[400px] w-full">
-                  <ChartContainer config={chartConfig}>
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={weeklyCallData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
-                        <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
-                        <ChartTooltip 
-                          content={<ChartTooltipContent />}
-                        />
-                        <Legend />
-                        <Line yAxisId="left" type="monotone" dataKey="calls" name="Calls" stroke="#6366f1" activeDot={{ r: 8 }} strokeWidth={2} />
-                        <Line yAxisId="right" type="monotone" dataKey="cost" name="Cost (£)" stroke="#ec4899" activeDot={{ r: 8 }} strokeWidth={2} />
-                        <Line yAxisId="left" type="monotone" dataKey="leadsGenerated" name="Leads" stroke="#10b981" activeDot={{ r: 8 }} strokeWidth={2} />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </ChartContainer>
+                <CardContent className="pt-0">
+                  <div className="h-[400px] w-full">
+                    <ChartContainer config={chartConfig}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <LineChart data={weeklyCallData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="name" />
+                          <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
+                          <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Line yAxisId="left" type="monotone" dataKey="calls" name="Calls" stroke="#6366f1" activeDot={{ r: 8 }} strokeWidth={2} />
+                          <Line yAxisId="right" type="monotone" dataKey="cost" name="Cost (£)" stroke="#ec4899" activeDot={{ r: 8 }} strokeWidth={2} />
+                          <Line yAxisId="left" type="monotone" dataKey="leadsGenerated" name="Leads" stroke="#10b981" activeDot={{ r: 8 }} strokeWidth={2} />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
                 </CardContent>
               </Card>
             </TabsContent>
           </Tabs>
 
-          {/* Call History Table */}
+          {/* Call History Table - No changes needed for this section */}
           <Card>
             <CardHeader>
               <CardTitle>Recent Call History</CardTitle>
@@ -198,57 +198,59 @@ const AnalyticsDashboard = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Date/Time</TableHead>
-                    <TableHead>Duration</TableHead>
-                    <TableHead>Type</TableHead>
-                    <TableHead>Cost</TableHead>
-                    <TableHead className="hidden md:table-cell">Summary</TableHead>
-                    <TableHead className="hidden lg:table-cell">Transcript</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {callHistoryData.map((call) => (
-                    <TableRow key={call.id}>
-                      <TableCell>
-                        <div className="flex flex-col">
-                          <span className="font-medium">{call.date}</span>
-                          <span className="text-xs text-gray-500 flex items-center gap-1">
-                            <Clock className="h-3 w-3" /> {call.time}
-                          </span>
-                        </div>
-                      </TableCell>
-                      <TableCell>{call.duration}</TableCell>
-                      <TableCell>
-                        <div className="flex items-center gap-1">
-                          <Tag className="h-3 w-3 text-estate-600" />
-                          <span>{call.type}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex items-center gap-1">
-                          <PoundSterling className="h-3 w-3 text-pink-500" />
-                          <span>{call.cost.replace('£', '')}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell max-w-xs">
-                        <div className="flex items-start gap-1">
-                          <MessageSquare className="h-3 w-3 mt-1 text-estate-600 flex-shrink-0" />
-                          <span className="text-xs truncate">{call.summary}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell className="hidden lg:table-cell max-w-md">
-                        <div className="flex items-start gap-1">
-                          <FileText className="h-3 w-3 mt-1 text-gray-500 flex-shrink-0" />
-                          <span className="text-xs truncate">{call.transcript}</span>
-                        </div>
-                      </TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Date/Time</TableHead>
+                      <TableHead>Duration</TableHead>
+                      <TableHead>Type</TableHead>
+                      <TableHead>Cost</TableHead>
+                      <TableHead className="hidden md:table-cell">Summary</TableHead>
+                      <TableHead className="hidden lg:table-cell">Transcript</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {callHistoryData.map((call) => (
+                      <TableRow key={call.id}>
+                        <TableCell>
+                          <div className="flex flex-col">
+                            <span className="font-medium">{call.date}</span>
+                            <span className="text-xs text-gray-500 flex items-center gap-1">
+                              <Clock className="h-3 w-3" /> {call.time}
+                            </span>
+                          </div>
+                        </TableCell>
+                        <TableCell>{call.duration}</TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-1">
+                            <Tag className="h-3 w-3 text-estate-600" />
+                            <span>{call.type}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex items-center gap-1">
+                            <PoundSterling className="h-3 w-3 text-pink-500" />
+                            <span>{call.cost.replace('£', '')}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell className="hidden md:table-cell max-w-xs">
+                          <div className="flex items-start gap-1">
+                            <MessageSquare className="h-3 w-3 mt-1 text-estate-600 flex-shrink-0" />
+                            <span className="text-xs truncate">{call.summary}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell className="hidden lg:table-cell max-w-md">
+                          <div className="flex items-start gap-1">
+                            <FileText className="h-3 w-3 mt-1 text-gray-500 flex-shrink-0" />
+                            <span className="text-xs truncate">{call.transcript}</span>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             </CardContent>
           </Card>
         </div>
