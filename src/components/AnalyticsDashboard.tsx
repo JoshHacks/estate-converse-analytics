@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -137,22 +138,22 @@ const AnalyticsDashboard = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-2 sm:p-4">
-                  <div className="w-full h-[250px]">
+                  <div className="w-full h-[200px]">
                     <ChartContainer config={chartConfig}>
-                      <ResponsiveContainer width="100%" height="100%">
+                      <ResponsiveContainer width="99%" height="99%">
                         <BarChart 
                           data={weeklyCallData} 
-                          margin={{ top: 10, right: 20, left: 0, bottom: 20 }}
+                          margin={{ top: 5, right: 15, left: 0, bottom: 15 }}
                         >
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="name" />
                           <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
                           <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
                           <ChartTooltip content={<ChartTooltipContent />} />
-                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '5px', fontSize: '12px' }} />
-                          <Bar yAxisId="left" dataKey="calls" name="Calls" fill="#6366f1" radius={[4, 4, 0, 0]} />
-                          <Bar yAxisId="right" dataKey="cost" name="Cost (£)" fill="#ec4899" radius={[4, 4, 0, 0]} />
-                          <Bar yAxisId="left" dataKey="leadsGenerated" name="Leads" fill="#10b981" radius={[4, 4, 0, 0]} />
+                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '2px', fontSize: '11px' }} />
+                          <Bar yAxisId="left" dataKey="calls" name="Calls" fill="#6366f1" radius={[3, 3, 0, 0]} />
+                          <Bar yAxisId="right" dataKey="cost" name="Cost (£)" fill="#ec4899" radius={[3, 3, 0, 0]} />
+                          <Bar yAxisId="left" dataKey="leadsGenerated" name="Leads" fill="#10b981" radius={[3, 3, 0, 0]} />
                         </BarChart>
                       </ResponsiveContainer>
                     </ChartContainer>
@@ -169,22 +170,22 @@ const AnalyticsDashboard = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-2 sm:p-4">
-                  <div className="w-full h-[250px]">
+                  <div className="w-full h-[200px]">
                     <ChartContainer config={chartConfig}>
-                      <ResponsiveContainer width="100%" height="100%">
+                      <ResponsiveContainer width="99%" height="99%">
                         <LineChart 
                           data={weeklyCallData} 
-                          margin={{ top: 10, right: 20, left: 0, bottom: 20 }}
+                          margin={{ top: 5, right: 15, left: 0, bottom: 15 }}
                         >
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="name" />
                           <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
                           <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
                           <ChartTooltip content={<ChartTooltipContent />} />
-                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '5px', fontSize: '12px' }} />
-                          <Line yAxisId="left" type="monotone" dataKey="calls" name="Calls" stroke="#6366f1" activeDot={{ r: 6 }} strokeWidth={2} />
-                          <Line yAxisId="right" type="monotone" dataKey="cost" name="Cost (£)" stroke="#ec4899" activeDot={{ r: 6 }} strokeWidth={2} />
-                          <Line yAxisId="left" type="monotone" dataKey="leadsGenerated" name="Leads" stroke="#10b981" activeDot={{ r: 6 }} strokeWidth={2} />
+                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '2px', fontSize: '11px' }} />
+                          <Line yAxisId="left" type="monotone" dataKey="calls" name="Calls" stroke="#6366f1" activeDot={{ r: 4 }} strokeWidth={1.5} />
+                          <Line yAxisId="right" type="monotone" dataKey="cost" name="Cost (£)" stroke="#ec4899" activeDot={{ r: 4 }} strokeWidth={1.5} />
+                          <Line yAxisId="left" type="monotone" dataKey="leadsGenerated" name="Leads" stroke="#10b981" activeDot={{ r: 4 }} strokeWidth={1.5} />
                         </LineChart>
                       </ResponsiveContainer>
                     </ChartContainer>
