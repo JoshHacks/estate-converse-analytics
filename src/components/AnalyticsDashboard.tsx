@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -116,7 +117,7 @@ const AnalyticsDashboard = () => {
             </Card>
           </div>
 
-          {/* Charts - Adjusted to fit without scrolling */}
+          {/* Charts - Fixed layout issues */}
           <Tabs defaultValue="bar" className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
               <TabsTrigger value="bar" className="flex items-center gap-2">
@@ -137,19 +138,19 @@ const AnalyticsDashboard = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-2 sm:p-4">
-                  <div style={{ height: '300px', width: '100%' }}>
+                  <div className="w-full" style={{ height: '400px', maxWidth: '100%', overflowX: 'hidden' }}>
                     <ChartContainer config={chartConfig}>
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart 
                           data={weeklyCallData} 
-                          margin={{ top: 10, right: 30, left: 0, bottom: 35 }}
+                          margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
                         >
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="name" />
                           <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
                           <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
                           <ChartTooltip content={<ChartTooltipContent />} />
-                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '10px', marginBottom: '20px' }} />
+                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '10px' }} />
                           <Bar yAxisId="left" dataKey="calls" name="Calls" fill="#6366f1" radius={[4, 4, 0, 0]} />
                           <Bar yAxisId="right" dataKey="cost" name="Cost (£)" fill="#ec4899" radius={[4, 4, 0, 0]} />
                           <Bar yAxisId="left" dataKey="leadsGenerated" name="Leads" fill="#10b981" radius={[4, 4, 0, 0]} />
@@ -169,19 +170,19 @@ const AnalyticsDashboard = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-2 sm:p-4">
-                  <div style={{ height: '300px', width: '100%' }}>
+                  <div className="w-full" style={{ height: '400px', maxWidth: '100%', overflowX: 'hidden' }}>
                     <ChartContainer config={chartConfig}>
                       <ResponsiveContainer width="100%" height="100%">
                         <LineChart 
                           data={weeklyCallData} 
-                          margin={{ top: 10, right: 30, left: 0, bottom: 35 }}
+                          margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
                         >
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="name" />
                           <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
                           <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
                           <ChartTooltip content={<ChartTooltipContent />} />
-                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '10px', marginBottom: '20px' }} />
+                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '10px' }} />
                           <Line yAxisId="left" type="monotone" dataKey="calls" name="Calls" stroke="#6366f1" activeDot={{ r: 8 }} strokeWidth={2} />
                           <Line yAxisId="right" type="monotone" dataKey="cost" name="Cost (£)" stroke="#ec4899" activeDot={{ r: 8 }} strokeWidth={2} />
                           <Line yAxisId="left" type="monotone" dataKey="leadsGenerated" name="Leads" stroke="#10b981" activeDot={{ r: 8 }} strokeWidth={2} />
@@ -265,3 +266,4 @@ const AnalyticsDashboard = () => {
 };
 
 export default AnalyticsDashboard;
+
