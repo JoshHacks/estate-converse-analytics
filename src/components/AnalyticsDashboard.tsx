@@ -137,17 +137,20 @@ const AnalyticsDashboard = () => {
                     Overview of calls, costs, and leads for the past week
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="h-[400px] w-full">
+                <CardContent className="p-2 sm:p-4">
+                  <div className="w-full" style={{ height: '400px', maxWidth: '100%', overflowX: 'hidden' }}>
                     <ChartContainer config={chartConfig}>
                       <ResponsiveContainer width="100%" height="100%">
-                        <BarChart data={weeklyCallData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                        <BarChart 
+                          data={weeklyCallData} 
+                          margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
+                        >
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="name" />
                           <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
                           <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
                           <ChartTooltip content={<ChartTooltipContent />} />
-                          <Legend />
+                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '10px' }} />
                           <Bar yAxisId="left" dataKey="calls" name="Calls" fill="#6366f1" radius={[4, 4, 0, 0]} />
                           <Bar yAxisId="right" dataKey="cost" name="Cost (£)" fill="#ec4899" radius={[4, 4, 0, 0]} />
                           <Bar yAxisId="left" dataKey="leadsGenerated" name="Leads" fill="#10b981" radius={[4, 4, 0, 0]} />
@@ -166,17 +169,20 @@ const AnalyticsDashboard = () => {
                     Trends of calls, costs, and leads for the past week
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="pt-0">
-                  <div className="h-[400px] w-full">
+                <CardContent className="p-2 sm:p-4">
+                  <div className="w-full" style={{ height: '400px', maxWidth: '100%', overflowX: 'hidden' }}>
                     <ChartContainer config={chartConfig}>
                       <ResponsiveContainer width="100%" height="100%">
-                        <LineChart data={weeklyCallData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                        <LineChart 
+                          data={weeklyCallData} 
+                          margin={{ top: 20, right: 30, left: 0, bottom: 20 }}
+                        >
                           <CartesianGrid strokeDasharray="3 3" />
                           <XAxis dataKey="name" />
                           <YAxis yAxisId="left" orientation="left" stroke="#6366f1" />
                           <YAxis yAxisId="right" orientation="right" stroke="#ec4899" />
                           <ChartTooltip content={<ChartTooltipContent />} />
-                          <Legend />
+                          <Legend layout="horizontal" verticalAlign="bottom" align="center" wrapperStyle={{ paddingTop: '10px' }} />
                           <Line yAxisId="left" type="monotone" dataKey="calls" name="Calls" stroke="#6366f1" activeDot={{ r: 8 }} strokeWidth={2} />
                           <Line yAxisId="right" type="monotone" dataKey="cost" name="Cost (£)" stroke="#ec4899" activeDot={{ r: 8 }} strokeWidth={2} />
                           <Line yAxisId="left" type="monotone" dataKey="leadsGenerated" name="Leads" stroke="#10b981" activeDot={{ r: 8 }} strokeWidth={2} />
@@ -189,7 +195,7 @@ const AnalyticsDashboard = () => {
             </TabsContent>
           </Tabs>
 
-          {/* Call History Table - No changes needed for this section */}
+          {/* Call History Table */}
           <Card>
             <CardHeader>
               <CardTitle>Recent Call History</CardTitle>
@@ -260,3 +266,4 @@ const AnalyticsDashboard = () => {
 };
 
 export default AnalyticsDashboard;
+
